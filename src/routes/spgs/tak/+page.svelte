@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
   
     const logout = async () => {
-      await fetch('/tak/API/logout', {
+      await fetch('/spgs/logout', {
         method: 'POST'
       });
       goto('/login');
