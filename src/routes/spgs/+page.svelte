@@ -1,20 +1,17 @@
-  <script lang="ts">
-      import { goto } from '$app/navigation';
+<script lang="ts">
+  import { goto } from '$app/navigation';
+  import { answersStore } from '$lib/stores/answers';
+
+  const submitAnswers = async (e: SubmitEvent) => {
+    e.preventDefault();
+
+    const q1 = (document.querySelector('input[name="q1"]:checked') as HTMLInputElement)?.value;
+    const q2 = (document.querySelector('input[name="q2"]:checked') as HTMLInputElement)?.value;
+
+    answersStore.set({ q1, q2 });
     
-      const submitAnswers = async (e: SubmitEvent) => {
-        e.preventDefault();
-
-        const q1 = (document.querySelector('input[name="q1"]:checked') as HTMLInputElement)?.value;
-        const q2 = (document.querySelector('input[name="q2"]:checked') as HTMLInputElement)?.value;
-
-        await fetch('/spgs/answers', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ q1, q2 })
-        });
-
-  goto('/tak');
-};
+    goto('/tak');
+  };
 
 
   </script>

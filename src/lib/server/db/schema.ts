@@ -1,6 +1,7 @@
-import { pgTable, serial, text, integer } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text } from 'drizzle-orm/pg-core';
 
-export const user = pgTable('user', {
+export const answers = pgTable('answers', {
 	id: serial('id').primaryKey(),
-	age: integer('age')
-});
+	q1: text('q1'),
+	q2: text('q2')
+});;
